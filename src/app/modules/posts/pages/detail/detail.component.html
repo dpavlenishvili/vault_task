@@ -1,0 +1,32 @@
+<div class="header">
+  <button (click)="onCancel()" label="Back" pButton></button>
+  <p-button (click)="showPostEditDialog()" icon="pi pi-external-link" label="Edit"></p-button>
+</div>
+<ng-container *ngIf="(post$ | async) as post">
+
+  <p-card [header]="post.title">
+    <p>{{post.body}}</p>
+
+    <br>
+    <h4>Comments</h4>
+    <br>
+    <ul>
+      <ng-container *ngFor="let comment of comments$ |async">
+        <li>{{comment.name}}</li>
+      </ng-container>
+    </ul>
+  </p-card>
+
+  <p-dialog [(visible)]="displayPostEditModal" [draggable]="false" [modal]="true" [resizable]="false"
+            [style]="{width: '50vw'}" header="Post Create">
+
+    <app-post-form (submitEmitter)="onEdit($event)" [formValue]="post"></app-post-form>
+
+    <ng-template pTemplate="footer">
+      <p-button (click)="displayPostEditModal=false" icon="pi pi-check" label="Cancel"
+                styleClass="p-button-text"></p-button>
+    </ng-template>
+  </p-dialog>
+
+</ng-container>
+

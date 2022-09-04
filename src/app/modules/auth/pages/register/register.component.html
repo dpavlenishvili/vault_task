@@ -1,0 +1,19 @@
+<form (submit)="onSubmit()" [formGroup]="form">
+  <div class="field">
+    <label for="firstName">First Name</label>
+    <input formControlName="email" id="firstName" pInputText type="text"/>
+  </div>
+  <div class="field">
+    <label for="lastName">Last Name</label>
+    <input formControlName="email" id="lastName" pInputText type="text"/>
+  </div>
+  <div class="field">
+    <label for="email">Email</label>
+    <input formControlName="email" id="email" pInputText type="text"/>
+  </div>
+  <div class="field">
+    <label for="password">Password</label>
+    <input formControlName="password" id="password" pInputText type="password"/>
+  </div>
+  <button label="Submit" pButton type="submit"></button>
+</form>

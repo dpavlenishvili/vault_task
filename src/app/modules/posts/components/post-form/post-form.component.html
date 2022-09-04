@@ -1,0 +1,11 @@
+<form (submit)="onSubmit()" [formGroup]="form">
+  <div class="field">
+    <label for="title">Title</label>
+    <input formControlName="title" id="title" pInputText type="text"/>
+  </div>
+  <div class="field">
+    <label for="body">Body</label>
+    <textarea cols="30" formControlName="body" id="body" pInputTextarea rows="5"></textarea>
+  </div>
+  <button label="Submit" pButton type="submit"></button>
+</form>

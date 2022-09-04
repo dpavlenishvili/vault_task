@@ -1,1 +1,8 @@
-<p>authorized works!</p>
+<p-menubar [model]="items">
+  <ng-template pTemplate="start">
+    <h3>Vault</h3>
+  </ng-template>
+</p-menubar>
+<div class="layout">
+  <router-outlet></router-outlet>
+</div>
