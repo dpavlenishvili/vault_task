@@ -1,13 +1,14 @@
 import {Inject, Injectable} from '@angular/core';
 import {Observable} from "rxjs";
-import {BASE_URL} from "../../core/token";
+import {BASE_URL} from "../../../token";
 import {HttpClient} from "@angular/common/http";
+import {CommentsDTO, PostDTO} from "../interfaces/post.interface";
 
 @Injectable({
   providedIn: 'root'
 })
 export class PostService {
-  private baseUrl: string | undefined;
+  private readonly baseUrl: string | undefined;
 
   constructor(
     @Inject(BASE_URL) baseUrl: string,
@@ -16,23 +17,23 @@ export class PostService {
     this.baseUrl = baseUrl
   }
 
-  getPosts(): Observable<any> {
-    return this.httpClient.get<any>(`${this.baseUrl}/posts`)
+  getPosts(): Observable<PostDTO[]> {
+    return this.httpClient.get<PostDTO[]>(`${this.baseUrl}/posts`)
   }
 
-  getPost(postId: number): Observable<any> {
-    return this.httpClient.get<any>(`${this.baseUrl}/posts/${postId}`)
+  getPost(postId: number): Observable<PostDTO> {
+    return this.httpClient.get<PostDTO>(`${this.baseUrl}/posts/${postId}`)
   }
 
-  getComments(postId: number): Observable<any> {
-    return this.httpClient.get<any>(`${this.baseUrl}/posts/${postId}/comments`)
+  getComments(postId: number): Observable<CommentsDTO[]> {
+    return this.httpClient.get<CommentsDTO[]>(`${this.baseUrl}/posts/${postId}/comments`)
   }
 
-  createPost(post: any): Observable<any> {
-    return this.httpClient.post<any>(`${this.baseUrl}/posts`, post)
+  createPost(post: Partial<PostDTO>): Observable<PostDTO> {
+    return this.httpClient.post<PostDTO>(`${this.baseUrl}/posts`, post)
   }
 
-  updatePost(post: any, postId: number): Observable<any> {
-    return this.httpClient.put<any>(`${this.baseUrl}/posts/${postId}`, post)
+  updatePost(post: Partial<PostDTO>, postId: number): Observable<PostDTO> {
+    return this.httpClient.put<PostDTO>(`${this.baseUrl}/posts/${postId}`, post)
   }
 }

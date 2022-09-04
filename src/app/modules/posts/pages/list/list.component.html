@@ -2,7 +2,7 @@
   <p-button (click)="showPostCreateDialog()" icon="pi pi-external-link" label="Create"></p-button>
 </div>
 <ng-container *ngIf="(posts$ | async) as posts">
-  <p-table [paginator]="true" [rowsPerPageOptions]="[10,25,50]" [rows]="1" [showCurrentPageReport]="true"
+  <p-table [paginator]="true" [rowsPerPageOptions]="[10,25,50]" [rows]="10" [showCurrentPageReport]="true"
            [value]="posts"
            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
            responsiveLayout="scroll">
@@ -20,13 +20,12 @@
         <td>{{post.title}}</td>
         <td class="text-wrap">{{post.body}}</td>
         <td style="text-align:center">
-          <button (click)="onPostEdit(post)" class="p-button-rounded p-button-text" icon="pi pi-pencil"
+          <button (click)="onEdit(post)" class="p-button-rounded p-button-text" icon="pi pi-pencil"
                   pButton></button>
         </td>
       </tr>
     </ng-template>
   </p-table>
-
 </ng-container>
 
 <p-dialog [(visible)]="displayPostCreateModal" [draggable]="false" [modal]="true" [resizable]="false"

@@ -2,13 +2,13 @@ import {RouterModule, Routes} from "@angular/router";
 import {AuthorizedComponent} from "./layout/authorized/authorized.component";
 import {UnauthorizedComponent} from "./layout/unauthorized/unauthorized.component";
 import {NgModule} from "@angular/core";
-import {AuthorizedGuard} from "./modules/core/guards/authorized.guard";
-import {UnauthorizedGuard} from "./modules/core/guards/unauthorized.guard";
+import {AuthorizedGuard} from "./guards/authorized.guard";
+import {UnauthorizedGuard} from "./guards/unauthorized.guard";
 
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'posts/list',
+    redirectTo: 'posts',
     pathMatch: 'full'
   },
   {

@@ -3,6 +3,7 @@ import {finalize, Observable, tap} from "rxjs";
 import {PostService} from "../../services/post.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {MessageService} from "primeng/api";
+import {PostDTO} from "../../interfaces/post.interface";
 
 @Component({
   selector: 'app-detail',
@@ -37,14 +38,14 @@ export class DetailComponent implements OnInit {
   }
 
   onCancel() {
-    this.router.navigate(['posts/list'])
+    this.router.navigate(['posts'])
   }
 
   showPostEditDialog() {
     this.displayPostEditModal = true;
   }
 
-  onEdit(post: any) {
+  onEdit(post: Partial<PostDTO>) {
     this.postService.updatePost(post, this.postId)
       .pipe(
         tap(() => this.post$ = null),

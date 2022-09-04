@@ -13,6 +13,7 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {InputTextareaModule} from "primeng/inputtextarea";
 import {InputTextModule} from "primeng/inputtext";
 import {ToastModule} from "primeng/toast";
+import {PaginatorModule} from "primeng/paginator";
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import {ToastModule} from "primeng/toast";
     ReactiveFormsModule,
     InputTextareaModule,
     InputTextModule,
-    ToastModule
+    ToastModule,
+    PaginatorModule
   ]
 })
 export class PostsModule {

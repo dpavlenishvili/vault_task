@@ -6,7 +6,7 @@ import {AuthorizedComponent} from './layout/authorized/authorized.component';
 import {UnauthorizedComponent} from './layout/unauthorized/unauthorized.component';
 import {RouterOutlet} from "@angular/router";
 import {AppRoutingModule} from "./app.routing.module";
-import {BASE_URL} from "./modules/core/token";
+import {BASE_URL} from "./token";
 import {environment} from "../environments/environment";
 import {HttpClientModule} from "@angular/common/http";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";

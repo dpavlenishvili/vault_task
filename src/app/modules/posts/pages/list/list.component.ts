@@ -3,6 +3,7 @@ import {finalize, Observable, tap} from "rxjs";
 import {PostService} from "../../services/post.service";
 import {Router} from "@angular/router";
 import {MessageService} from "primeng/api";
+import {PostDTO} from "../../interfaces/post.interface";
 
 @Component({
   selector: 'app-list',
@@ -10,7 +11,7 @@ import {MessageService} from "primeng/api";
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
-  posts$: Observable<any[]> | null = null;
+  posts$: Observable<PostDTO[]> | null = null;
   displayPostCreateModal: boolean = false;
 
   constructor(
@@ -28,11 +29,15 @@ export class ListComponent implements OnInit {
     this.posts$ = this.postService.getPosts();
   }
 
-  onPostEdit(post: any) {
-    this.router.navigate(['posts/list', post.id])
+  showPostCreateDialog() {
+    this.displayPostCreateModal = true
   }
 
-  onCreate(post: any) {
+  onEdit(post: Partial<PostDTO>) {
+    this.router.navigate(['posts', post.id])
+  }
+
+  onCreate(post: Partial<PostDTO>) {
     this.postService.createPost(post)
       .pipe(
         tap(() => this.posts$ = null),
@@ -41,9 +46,5 @@ export class ListComponent implements OnInit {
         finalize(() => this.displayPostCreateModal = false)
       )
       .subscribe()
-  }
-
-  showPostCreateDialog() {
-    this.displayPostCreateModal = true
   }
 }

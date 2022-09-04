@@ -1,13 +1,13 @@
 import {Injectable} from '@angular/core';
 import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot,} from '@angular/router';
 import {map, Observable} from 'rxjs';
-import {AuthService} from "../../auth/services/auth.service";
-import {UserInterface} from "../../auth/interfaces/user";
+import {UserInterface} from "../modules/auth/interfaces/user";
+import {AuthService} from "../modules/auth/services/auth.service";
 
 @Injectable({
   providedIn: 'root',
 })
-export class AuthorizedGuard implements CanActivate {
+export class UnauthorizedGuard implements CanActivate {
   constructor(
     private router: Router,
     private authService: AuthService
@@ -22,10 +22,10 @@ export class AuthorizedGuard implements CanActivate {
       .pipe(
         map((user: UserInterface | undefined) => {
           if (user?.email) {
-            return true
-          } else {
-            this.router.navigate(['auth/login'])
+            this.router.navigate(['/'])
             return false
+          } else {
+            return true
           }
         })
       );

@@ -1,5 +1,5 @@
 import {Inject, Injectable} from '@angular/core';
-import {BASE_URL} from "../../core/token";
+import {BASE_URL} from "../../../token";
 import {Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {UserInterface} from "../interfaces/user";
@@ -8,7 +8,7 @@ import {UserInterface} from "../interfaces/user";
   providedIn: 'root'
 })
 export class AuthService {
-  private baseUrl: string | undefined;
+  private readonly baseUrl: string | undefined;
 
   constructor(
     @Inject(BASE_URL) baseUrl: string,
