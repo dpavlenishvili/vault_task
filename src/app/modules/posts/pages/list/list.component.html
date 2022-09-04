@@ -1,6 +1,7 @@
 <div class="header">
   <p-button (click)="showPostCreateDialog()" icon="pi pi-external-link" label="Create"></p-button>
 </div>
+<br>
 <ng-container *ngIf="(posts$ | async) as posts">
   <p-table [paginator]="true" [rowsPerPageOptions]="[10,25,50]" [rows]="10" [showCurrentPageReport]="true"
            [value]="posts"

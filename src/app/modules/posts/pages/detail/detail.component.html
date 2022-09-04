@@ -1,7 +1,8 @@
-<div class="header">
+<div class="header d-flex justify-content-space-between">
   <button (click)="onCancel()" label="Back" pButton></button>
   <p-button (click)="showPostEditDialog()" icon="pi pi-external-link" label="Edit"></p-button>
 </div>
+<br>
 <ng-container *ngIf="(post$ | async) as post">
 
   <p-card [header]="post.title">
