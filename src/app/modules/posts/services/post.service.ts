@@ -25,15 +25,15 @@ export class PostService {
     return this.httpClient.get<PostDTO>(`${this.baseUrl}/posts/${postId}`)
   }
 
-  getComments(postId: number): Observable<CommentsDTO[]> {
+  getComments(postId: number | undefined): Observable<CommentsDTO[]> {
     return this.httpClient.get<CommentsDTO[]>(`${this.baseUrl}/posts/${postId}/comments`)
   }
 
-  createPost(post: Partial<PostDTO>): Observable<PostDTO> {
+  createPost(post: PostDTO): Observable<PostDTO> {
     return this.httpClient.post<PostDTO>(`${this.baseUrl}/posts`, post)
   }
 
-  updatePost(post: Partial<PostDTO>, postId: number): Observable<PostDTO> {
+  updatePost(post: PostDTO, postId: number): Observable<PostDTO> {
     return this.httpClient.put<PostDTO>(`${this.baseUrl}/posts/${postId}`, post)
   }
 }

@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormGroup} from "@angular/forms";
+import {postForm} from "./form";
 
 @Component({
   selector: 'app-post-form',
@@ -7,12 +8,8 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
   styleUrls: ['./post-form.component.scss']
 })
 export class PostFormComponent {
+  form: FormGroup = postForm();
   @Output() submitEmitter = new EventEmitter<any>()
-  form: FormGroup = new FormGroup<any>({
-    title: new FormControl('', Validators.required),
-    body: new FormControl('', Validators.required),
-    userId: new FormControl(1)
-  })
 
   @Input('formValue')
   set setForm(value: { [key: string]: any; }) {

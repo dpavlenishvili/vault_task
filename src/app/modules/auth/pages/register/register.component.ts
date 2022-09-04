@@ -3,6 +3,7 @@ import {FormGroup} from "@angular/forms";
 import {AuthService} from "../../services/auth.service";
 import {Router} from "@angular/router";
 import {registrationForm} from "./form";
+import {tap} from "rxjs";
 
 @Component({
   selector: 'app-register',
@@ -19,13 +20,12 @@ export class RegisterComponent {
   }
 
   onSubmit() {
-    this.router.navigate(['auth/login'])
-    // if (this.form.valid) {
-    //   this.authService.register(this.form.value)
-    //     .pipe(
-    //       tap(() => this.router.navigate(['auth/login']))
-    //     )
-    //     .subscribe()
-    // }
+    if (this.form.valid) {
+      this.authService.register(this.form.value)
+        .pipe(
+          tap(() => this.router.navigate(['auth/login']))
+        )
+        .subscribe()
+    }
   }
 }

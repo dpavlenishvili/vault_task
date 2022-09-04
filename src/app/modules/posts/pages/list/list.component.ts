@@ -33,11 +33,11 @@ export class ListComponent implements OnInit {
     this.displayPostCreateModal = true
   }
 
-  onEdit(post: Partial<PostDTO>) {
+  onEdit(post: PostDTO) {
     this.router.navigate(['posts', post.id])
   }
 
-  onCreate(post: Partial<PostDTO>) {
+  onCreate(post: PostDTO) {
     this.postService.createPost(post)
       .pipe(
         tap(() => this.posts$ = null),

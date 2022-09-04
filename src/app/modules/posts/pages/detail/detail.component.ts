@@ -3,7 +3,7 @@ import {finalize, Observable, tap} from "rxjs";
 import {PostService} from "../../services/post.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {MessageService} from "primeng/api";
-import {PostDTO} from "../../interfaces/post.interface";
+import {CommentsDTO, PostDTO} from "../../interfaces/post.interface";
 
 @Component({
   selector: 'app-detail',
@@ -13,7 +13,7 @@ import {PostDTO} from "../../interfaces/post.interface";
 export class DetailComponent implements OnInit {
 
   post$: Observable<any> | null = null;
-  comments$: Observable<any[]> | null = null;
+  comments$: Observable<CommentsDTO[]> | null = null;
   displayPostEditModal: boolean = false;
   postId: number;
 
@@ -33,7 +33,7 @@ export class DetailComponent implements OnInit {
   getPost() {
     this.post$ = this.postService.getPost(this.postId)
       .pipe(
-        tap((post) => this.comments$ = this.postService.getComments(post.id))
+        tap((post: PostDTO) => this.comments$ = this.postService.getComments(post.id))
       );
   }
 
@@ -45,7 +45,7 @@ export class DetailComponent implements OnInit {
     this.displayPostEditModal = true;
   }
 
-  onEdit(post: Partial<PostDTO>) {
+  onEdit(post: PostDTO) {
     this.postService.updatePost(post, this.postId)
       .pipe(
         tap(() => this.post$ = null),

@@ -15,5 +15,8 @@
     <label for="password">Password</label>
     <input formControlName="password" id="password" pInputText type="password"/>
   </div>
-  <button label="Submit" pButton type="submit"></button>
+  <div class="d-flex justify-content-space-between align-items-center">
+    <a [routerLink]="['/auth/login']">Authorize</a>
+    <button label="Register" pButton type="submit"></button>
+  </div>
 </form>

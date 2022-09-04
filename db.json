@@ -8,13 +8,7 @@
       "id": 1
     }
   ],
-  "authenticatedUser": {
-    "firstName": "Davit",
-    "lastName": "Pavlenishvili",
-    "email": "datunapavlenishvili@gmail.com",
-    "password": "111111",
-    "id": 1
-  },
+  "authenticatedUser": {},
   "posts": [
     {
       "userId": 1,
